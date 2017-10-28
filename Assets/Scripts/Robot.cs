@@ -11,7 +11,7 @@ public class Robot: MonoBehaviour {
     Camera guiCamera;
     public int moveLimit;
     Tilemap moveui;
-    Tilemap background;
+   public Tilemap background;
     public gameManager GM;
     public Transform animations;
     Vector3 prePos;
@@ -23,7 +23,7 @@ public class Robot: MonoBehaviour {
     public enum SCANTYPE { MOVE=0,WEAPON};
     public ACTSTATUS actStatus;
     POSITIONSTATUS posStatus;
-    Dictionary<Vector2,int> rangeList;
+   public Dictionary<Vector2,int> rangeList;
    public Dictionary<string, Weapon> weaponList;
     public Dictionary<string, int> weaponID;
     public string mechName;
@@ -333,7 +333,7 @@ public class Robot: MonoBehaviour {
         }
         moveui.UpdateMesh();
     }
-    void scanAbleToAttack()
+   public bool scanAbleToAttack()
     {
 
         Dictionary<Vector2, int> tempList = new Dictionary<Vector2, int>();
@@ -366,9 +366,10 @@ public class Robot: MonoBehaviour {
                 if (r!=0&&r!=(int)race)
                 {
                     ableToAttack = true;
-                    return;
+                    return true;
                 }
             }
+            return false;
 
         }
         ableToAttack = false;
